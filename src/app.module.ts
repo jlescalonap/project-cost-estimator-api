@@ -4,11 +4,12 @@ import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma/prisma.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // Disponible en toda la app sin necesidad de importarlo
+      isGlobal: true,
       validationSchema: Joi.object({
         PORT: Joi.number().default(3000),
         NODE_ENV: Joi.string()
@@ -17,8 +18,14 @@ import { PrismaService } from './prisma/prisma.service';
         DATABASE_URL: Joi.string().required(),
         REDIS_HOST: Joi.string().required(),
         REDIS_PORT: Joi.number().required(),
+        GITHUB_CLIENT_ID: Joi.string().required(),
+        GITHUB_CLIENT_SECRET: Joi.string().required(),
+        GITHUB_CALLBACK_URL: Joi.string().required(),
+        JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRATION: Joi.string().required(),
       }),
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
