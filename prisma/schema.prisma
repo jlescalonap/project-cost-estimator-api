@@ -51,8 +51,40 @@ model Project {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  isDeleted Boolean   @default(false)
-  deletedAt DateTime?
+  isDeleted    Boolean       @default(false)
+  deletedAt    DateTime?
+  requirements Requirement[]
 
   @@map("projects")
+}
+
+enum Complexity {
+  LOW
+  MEDIUM
+  HIGH
+  INSANE
+}
+
+enum Priority {
+  MUST_HAVE
+  NICE_TO_HAVE
+}
+
+model Requirement {
+  id             String     @id @default(uuid())
+  title          String
+  description    String?    @db.Text
+  complexity     Complexity
+  estimatedHours Float?
+  priority       Priority   @default(MUST_HAVE)
+
+  // Relación con Project
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  // Auditoría
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("requirements")
 }
