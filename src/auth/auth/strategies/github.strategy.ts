@@ -2,10 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, Profile } from 'passport-github2';
+import { AuthService } from '../../auth.service';
 
 @Injectable()
 export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
-  constructor(configService: ConfigService) {
+  constructor(
+    configService: ConfigService,
+    private authService: AuthService,
+  ) {
     super({
       clientID: configService.get<string>('GITHUB_CLIENT_ID'),
       clientSecret: configService.get<string>('GITHUB_CLIENT_SECRET'),
@@ -15,18 +19,16 @@ export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
   }
 
   async validate(accessToken: string, _refreshToken: string, profile: Profile) {
-    // Aquí recibimos los datos de GitHub
     const { id, username, photos, emails } = profile;
 
-    // Normalizamos los datos para nuestro sistema
-    const user = {
+    const rawUser = {
       githubId: id,
       email: emails?.[0]?.value,
-      name: username, // O profile.displayName
+      name: username,
       avatarUrl: photos?.[0]?.value,
-      accessToken, // Útil si queremos llamar a la API de GitHub después
+      accessToken,
     };
 
-    return user; // Esto se inyectará en el objeto Request (req.user)
+    return this.authService.validateOAuthLogin(rawUser);
   }
 }

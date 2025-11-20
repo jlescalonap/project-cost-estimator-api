@@ -3,8 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaService } from './prisma/prisma.service';
 import { AuthModule } from './auth/auth.module';
+import { ProjectsModule } from './projects/projects.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -25,9 +26,11 @@ import { AuthModule } from './auth/auth.module';
         JWT_EXPIRATION: Joi.string().required(),
       }),
     }),
+    PrismaModule,
     AuthModule,
+    ProjectsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService],
+  providers: [AppService],
 })
 export class AppModule {}

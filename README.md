@@ -9,8 +9,6 @@
 
 DevsWorth API is a specialized backend solution designed to streamline project cost estimation. It uses an advanced algorithm to calculate software development costs based on variable complexity, developer seniority, and regional economic factors.
 
-This repository demonstrates enterprise-grade practices using a modern Node.js stack.
-
 ## Tech Stack
 
 - **Core:** NestJS (Node.js), TypeScript
@@ -78,7 +76,8 @@ The project follows a strict Modular Monolith architecture.
 ```
 src/
 ├── auth/           # Authentication Domain (OAuth, JWT, Guards)
-├── prisma/         # Database Connection Module
+├── projects/       # Project Management (CRUD, Soft Deletes)
+├── prisma/         # Global Database Module
 ├── app.module.ts   # Root Module & Config Validation
 └── main.ts         # Entry point (Global Pipes, Swagger Setup)
 ```
