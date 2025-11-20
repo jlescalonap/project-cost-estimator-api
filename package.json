@@ -70,5 +70,11 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run format",
+      "npm run lint"
+    ]
   }
 }
