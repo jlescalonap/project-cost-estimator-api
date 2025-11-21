@@ -15,6 +15,7 @@ DevsWorth API is a specialized backend solution designed to streamline project c
 - **Database:** PostgreSQL 16
 - **ORM:** Prisma (Type-safe database access)
 - **Authentication:** OAuth2 (GitHub Strategy) + JWT (Stateless)
+- **Authorization:** RBAC (Role-Based Access Control)
 - **Caching/Queue:** Redis
 - **Infrastructure:** Docker & Docker Compose
 - **Validation:** Joi (Env vars) + class-validator (DTOs)
@@ -75,12 +76,37 @@ The project follows a strict Modular Monolith architecture.
 
 ```
 src/
-├── auth/           # Authentication Domain (OAuth, JWT, Guards)
+├── auth/           # Authentication Domain (OAuth, JWT, Guards, RBAC)
 ├── projects/       # Project Management (CRUD, Soft Deletes)
+├── requirements/   # Requirements Management (Nested CRUD)
+├── estimation/     # Cost Calculator Engine
 ├── prisma/         # Global Database Module
 ├── app.module.ts   # Root Module & Config Validation
 └── main.ts         # Entry point (Global Pipes, Swagger Setup)
 ```
+
+## API Endpoints
+
+### Authentication
+- `GET /api/auth/github` - Initiate GitHub OAuth flow
+- `GET /api/auth/github/callback` - OAuth callback (returns JWT)
+
+### Projects
+- `POST /api/projects` - Create a new project
+- `GET /api/projects` - List user's projects
+- `GET /api/projects/:id` - Get project details
+- `PATCH /api/projects/:id` - Update project
+- `DELETE /api/projects/:id` - Soft delete project
+
+### Requirements
+- `POST /api/projects/:projectId/requirements` - Add requirement to project
+- `GET /api/projects/:projectId/requirements` - List project requirements
+- `GET /api/projects/:projectId/requirements/:id` - Get requirement details
+- `PATCH /api/projects/:projectId/requirements/:id` - Update requirement
+- `DELETE /api/projects/:projectId/requirements/:id` - Delete requirement
+
+### Estimation
+- `POST /api/projects/:projectId/calculate-cost` - Calculate project cost estimate
 
 ## License
 
