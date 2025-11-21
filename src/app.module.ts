@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { ProjectsModule } from './projects/projects.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RequirementsModule } from './requirements/requirements.module';
+import { EstimationModule } from './estimation/estimation.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { RequirementsModule } from './requirements/requirements.module';
     AuthModule,
     ProjectsModule,
     RequirementsModule,
+    EstimationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
