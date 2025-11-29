@@ -4,10 +4,31 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Built with NestJS](https://img.shields.io/badge/Built%20with-NestJS-red.svg)](https://nestjs.com/)
+[![Roadmap](https://img.shields.io/badge/Roadmap-MVP%20Completed-brightgreen)]()
 
 ## Overview
 
 DevsWorth API is a specialized backend solution designed to streamline project cost estimation. It uses an advanced algorithm to calculate software development costs based on variable complexity, developer seniority, and regional economic factors.
+
+---
+
+## Project Status
+
+**MVP Completed — v1.0.0**
+
+The initial Minimum Viable Product is fully implemented, including:
+
+- GitHub OAuth2 authentication
+- JWT-based sessionless flow
+- RBAC authorization
+- Project & Requirements management
+- Cost Estimation Engine
+- PostgreSQL + Prisma schema
+- Redis caching and infrastructure setup
+
+The system is production-ready at the MVP level and serves as the foundation for the upcoming advanced features.
+
+---
 
 ## Tech Stack
 
@@ -111,6 +132,52 @@ src/
 ### Estimation
 
 - `POST /api/projects/:projectId/calculate-cost` - Calculate project cost estimate
+
+---
+
+## Development Roadmap
+
+This project is developed following a milestone-based roadmap.
+All phases and issues are tracked under the `brain/` directory inside the repository.
+
+### ✔️ Phase 1 — Foundation (Completed)
+
+- Repository setup
+- Docker environment
+- NestJS configuration
+
+### ✔️ Phase 2 — Authentication & Access Control (Completed)
+
+- Prisma user model
+- GitHub OAuth flow
+- RBAC & Guards
+
+### ✔️ Phase 3 — Core Domain (Completed)
+
+- Projects CRUD
+- Requirements logic
+
+### ✔️ Phase 4 — Estimation Engine (Completed)
+
+- Cost engine implementation
+- Complexity and seniority scoring
+- Economic region adjustments
+
+---
+
+### 🔮 Phase 5 — Next Iteration (Planned)
+
+Upcoming features for v1.1:
+
+- AI-powered requirement analyzer
+- Task breakdown generator
+- Improved estimation heuristics
+- Developer dashboard
+- Public API registry
+
+Progress is updated regularly as new milestones are completed.
+
+---
 
 ## License
 
