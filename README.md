@@ -88,10 +88,12 @@ src/
 ## API Endpoints
 
 ### Authentication
+
 - `GET /api/auth/github` - Initiate GitHub OAuth flow
 - `GET /api/auth/github/callback` - OAuth callback (returns JWT)
 
 ### Projects
+
 - `POST /api/projects` - Create a new project
 - `GET /api/projects` - List user's projects
 - `GET /api/projects/:id` - Get project details
@@ -99,6 +101,7 @@ src/
 - `DELETE /api/projects/:id` - Soft delete project
 
 ### Requirements
+
 - `POST /api/projects/:projectId/requirements` - Add requirement to project
 - `GET /api/projects/:projectId/requirements` - List project requirements
 - `GET /api/projects/:projectId/requirements/:id` - Get requirement details
@@ -106,6 +109,7 @@ src/
 - `DELETE /api/projects/:projectId/requirements/:id` - Delete requirement
 
 ### Estimation
+
 - `POST /api/projects/:projectId/calculate-cost` - Calculate project cost estimate
 
 ## License
