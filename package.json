@@ -1,10 +1,18 @@
 {
   "name": "devs-worth",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "Professional Project Estimation for Serious Developers.",
+  "author": "José Escalona",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlescalonap/devs-worth-api.git"
+  },
+  "homepage": "https://github.com/jlescalonap/devs-worth-api",
+  "bugs": {
+    "url": "https://github.com/jlescalonap/devs-worth-api/issues"
+  },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
