@@ -2,7 +2,9 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import { Role } from '@prisma/client';
+import { Logger } from '@nestjs/common';
 
+const logger = new Logger('AuthService');
 @Injectable()
 export class AuthService {
   constructor(
@@ -32,6 +34,7 @@ export class AuthService {
 
       return newUser;
     } catch (error) {
+      logger.error(error);
       throw new InternalServerErrorException('Error validating OAuth login');
     }
   }
